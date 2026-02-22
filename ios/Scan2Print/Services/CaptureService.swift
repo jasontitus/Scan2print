@@ -6,11 +6,14 @@ import _RealityKit_SwiftUI
 class CaptureService: ObservableObject {
     @Published var session: ObjectCaptureSession?
     @Published var isReady = false
+    @Published var shotCount = 0
+    @Published var feedback: Set<ObjectCaptureSession.Feedback> = []
 
     let imageDirectory: URL
     let checkpointDirectory: URL
 
     private var stateMonitorTask: Task<Void, Never>?
+    private var feedbackMonitorTask: Task<Void, Never>?
 
     init() {
         let base = FileManager.default.temporaryDirectory.appending(path: "scan2print", directoryHint: .isDirectory)
@@ -37,6 +40,15 @@ class CaptureService: ObservableObject {
                 default:
                     break
                 }
+                self.shotCount = session.numberOfShotsTaken
+            }
+        }
+
+        feedbackMonitorTask = Task { [weak self] in
+            for await feedback in session.feedbackUpdates {
+                guard let self else { return }
+                self.feedback = feedback
+                self.shotCount = session.numberOfShotsTaken
             }
         }
     }
@@ -48,8 +60,12 @@ class CaptureService: ObservableObject {
     func reset() {
         stateMonitorTask?.cancel()
         stateMonitorTask = nil
+        feedbackMonitorTask?.cancel()
+        feedbackMonitorTask = nil
         session = nil
         isReady = false
+        shotCount = 0
+        feedback = []
     }
 
     private func cleanDirectories() {

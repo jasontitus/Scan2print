@@ -17,6 +17,8 @@ struct ScanFlowView: View {
             case .scanning:
                 ScanView(captureService: captureService) {
                     startReconstruction()
+                } onCancel: {
+                    reset()
                 }
 
             case .reconstructing(let progress):
