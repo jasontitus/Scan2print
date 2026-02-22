@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+
+# Uploads and temp files
+backend/uploads/
+/tmp/scan2print/
+
+# macOS
+.DS_Store
+
+# Xcode
+ios/Scan2Print.xcodeproj/xcuserdata/
+ios/Scan2Print.xcodeproj/project.xcworkspace/xcuserdata/
+ios/*.xcworkspace/xcuserdata/
+build/
+DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+# Logs
+*.log

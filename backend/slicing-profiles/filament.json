@@ -1,0 +1,7 @@
+{
+  "filament_type": "PLA",
+  "nozzle_temperature": "220",
+  "bed_temperature": "60",
+  "filament_flow_ratio": "0.98",
+  "_comment": "Replace with your actual BambuStudio filament profile export"
+}

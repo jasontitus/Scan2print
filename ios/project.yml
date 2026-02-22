@@ -1,0 +1,41 @@
+name: Scan2Print
+options:
+  bundleIdPrefix: com.scan2print
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "16.3"
+
+targets:
+  Scan2Print:
+    type: application
+    platform: iOS
+    sources:
+      - path: Scan2Print
+        excludes:
+          - Info.plist
+    info:
+      path: Scan2Print/Info.plist
+      properties:
+        NSCameraUsageDescription: "Scan2Print needs camera access to scan 3D objects using LiDAR."
+        NSPhotoLibraryUsageDescription: "Scan2Print needs photo library access to store scan images during reconstruction."
+        UILaunchScreen: {}
+    settings:
+      base:
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_FILE: Scan2Print/Info.plist
+    dependencies:
+      - sdk: RealityKit.framework
+      - sdk: ARKit.framework
+      - sdk: SceneKit.framework
+
+  Scan2PrintTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Scan2Print Tests
+    dependencies:
+      - target: Scan2Print
+    settings:
+      base:
+        SWIFT_VERSION: "5.0"

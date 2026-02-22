@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02BEF2A9C6D132A6AED9CD28 /* ReconstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250AE778703682753BF9580 /* ReconstructionView.swift */; };
+		0788517ECF0AEC2C8B01E41A /* ModelPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5BD81F4BC20ADBD0495EF /* ModelPreviewView.swift */; };
+		0F90A1981B8335F0A9DF314A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B57CF4051F3A29EC687F48 /* NetworkService.swift */; };
+		17AC13CC911F40162AA4A567 /* SavedScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F01613BE8B9BA04D7639C /* SavedScanTests.swift */; };
+		2128082A1E2296E3D430F0FA /* ScanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4DEFC7CB3C183076F66A98 /* ScanStore.swift */; };
+		39CD2658F2D83EC80D35A754 /* ScanState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468EA69823095622ABB17AE2 /* ScanState.swift */; };
+		469E050A9B71C0068AC05063 /* ScanJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AACC4AD29F26785AD82920 /* ScanJob.swift */; };
+		4E26EB813704EFCDF1061CFB /* ScanSavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC1A93AA4E0BE2822F88D89 /* ScanSavedView.swift */; };
+		55FCAEC12BC3AE7FD44385DB /* CaptureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F503BD79341963745BEB256A /* CaptureService.swift */; };
+		5C9D4E749F8EA508FCB93989 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40891E525EA8F634C06D8110 /* NetworkServiceTests.swift */; };
+		5D385D1233FAE025B104020E /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A638437C3FB34BDA12D2F2 /* SceneKit.framework */; };
+		6601D0C44DC7D8D75D4911E8 /* RealityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71EC935A0A562534659D9E50 /* RealityKit.framework */; };
+		6A87E22C07ED7A1839ECFBB9 /* ScanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9806A6132BC7CC3CCD081 /* ScanDetailView.swift */; };
+		78784AE6CAA3C6BD97E94D2A /* ScanRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAF78E9467855D524C498CB /* ScanRowView.swift */; };
+		7C298731185B5940E2CF34C1 /* SavedScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4936037D68AB0BF09B37A795 /* SavedScan.swift */; };
+		8A9ED89031C746041CF32A9E /* ReconstructionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D6A920636A121CBCE2B7A7 /* ReconstructionService.swift */; };
+		90BDABAF5A051032317F8B66 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F345F40B3F35E318CF37C35D /* ARKit.framework */; };
+		94453CACD5E58D81A3568E90 /* ScanStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D3E3ACD2166F5E58971E33 /* ScanStateTests.swift */; };
+		AC6746E79BA394760562B9B4 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFF8B8ED2C7258577BFC94E /* LibraryView.swift */; };
+		B5927A1EA325B6B535E4D5C6 /* Scan2PrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952296509F2868F25999A374 /* Scan2PrintApp.swift */; };
+		BFDAF40E8AEF1A8295815ECF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DF0F243F37FA036CA2067 /* Config.swift */; };
+		C2616A951DBFA27B26E59521 /* ScanJobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA70DAA515FE869D12A34CC /* ScanJobTests.swift */; };
+		C533D6C8BA92554D5506D312 /* ScanFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324867283AFA7DB441414015 /* ScanFlowView.swift */; };
+		D03B8ED221D6474A272CEBB9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAA7B0A095F23262878DA4 /* ContentView.swift */; };
+		E6901F6235C06DA14EF1EFD4 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB290BAAF08BFCE9F822AE7 /* ResultView.swift */; };
+		EA31AB9EE7C2CEA10CEFF2AB /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86B7B85BD21CCC7459C4A7 /* ScanView.swift */; };
+		FEA38537990DB52C14966283 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C7526DD0E61DF4510D03BF /* UploadView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E7F3B4924CEC6A92A339F4F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8585F9FB4EC4A27D0E23288 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B82B008E510673831275581;
+			remoteInfo = Scan2Print;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02A9806A6132BC7CC3CCD081 /* ScanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDetailView.swift; sourceTree = "<group>"; };
+		05A2F8F8EAF6E00BA1A1AC22 /* Scan2Print.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Scan2Print.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D86B7B85BD21CCC7459C4A7 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		24D3E3ACD2166F5E58971E33 /* ScanStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStateTests.swift; sourceTree = "<group>"; };
+		28B57CF4051F3A29EC687F48 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		324867283AFA7DB441414015 /* ScanFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFlowView.swift; sourceTree = "<group>"; };
+		3CC1A93AA4E0BE2822F88D89 /* ScanSavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSavedView.swift; sourceTree = "<group>"; };
+		3D187F9E6BEB652A16042C09 /* Scan2PrintTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = Scan2PrintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40891E525EA8F634C06D8110 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		468EA69823095622ABB17AE2 /* ScanState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanState.swift; sourceTree = "<group>"; };
+		4936037D68AB0BF09B37A795 /* SavedScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScan.swift; sourceTree = "<group>"; };
+		49D6A920636A121CBCE2B7A7 /* ReconstructionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconstructionService.swift; sourceTree = "<group>"; };
+		4BFAA7B0A095F23262878DA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5A2F01613BE8B9BA04D7639C /* SavedScanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedScanTests.swift; sourceTree = "<group>"; };
+		60AACC4AD29F26785AD82920 /* ScanJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanJob.swift; sourceTree = "<group>"; };
+		640DF0F243F37FA036CA2067 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		70A638437C3FB34BDA12D2F2 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+		71EC935A0A562534659D9E50 /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
+		7CE5BD81F4BC20ADBD0495EF /* ModelPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPreviewView.swift; sourceTree = "<group>"; };
+		8250AE778703682753BF9580 /* ReconstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconstructionView.swift; sourceTree = "<group>"; };
+		952296509F2868F25999A374 /* Scan2PrintApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan2PrintApp.swift; sourceTree = "<group>"; };
+		AEFF8B8ED2C7258577BFC94E /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		BDAF78E9467855D524C498CB /* ScanRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRowView.swift; sourceTree = "<group>"; };
+		BEA70DAA515FE869D12A34CC /* ScanJobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanJobTests.swift; sourceTree = "<group>"; };
+		D9C7526DD0E61DF4510D03BF /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
+		EA4DEFC7CB3C183076F66A98 /* ScanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStore.swift; sourceTree = "<group>"; };
+		F345F40B3F35E318CF37C35D /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
+		F503BD79341963745BEB256A /* CaptureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureService.swift; sourceTree = "<group>"; };
+		FEB290BAAF08BFCE9F822AE7 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66FDCA126A0D5E0D209BDBE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6601D0C44DC7D8D75D4911E8 /* RealityKit.framework in Frameworks */,
+				90BDABAF5A051032317F8B66 /* ARKit.framework in Frameworks */,
+				5D385D1233FAE025B104020E /* SceneKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		174ADD0B5772E383B30DF873 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4BFAA7B0A095F23262878DA4 /* ContentView.swift */,
+				AEFF8B8ED2C7258577BFC94E /* LibraryView.swift */,
+				7CE5BD81F4BC20ADBD0495EF /* ModelPreviewView.swift */,
+				8250AE778703682753BF9580 /* ReconstructionView.swift */,
+				FEB290BAAF08BFCE9F822AE7 /* ResultView.swift */,
+				02A9806A6132BC7CC3CCD081 /* ScanDetailView.swift */,
+				324867283AFA7DB441414015 /* ScanFlowView.swift */,
+				BDAF78E9467855D524C498CB /* ScanRowView.swift */,
+				3CC1A93AA4E0BE2822F88D89 /* ScanSavedView.swift */,
+				0D86B7B85BD21CCC7459C4A7 /* ScanView.swift */,
+				D9C7526DD0E61DF4510D03BF /* UploadView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3DD670637DB6B7EF2970976A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05A2F8F8EAF6E00BA1A1AC22 /* Scan2Print.app */,
+				3D187F9E6BEB652A16042C09 /* Scan2PrintTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FD9651A18FAF840EA665C43 = {
+			isa = PBXGroup;
+			children = (
+				9A2578829946C8F919331927 /* Scan2Print */,
+				EBB70BDBC2F0E0350486B0F9 /* Scan2Print Tests */,
+				71BA3360D7E85F7E64AD532B /* Frameworks */,
+				3DD670637DB6B7EF2970976A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71BA3360D7E85F7E64AD532B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F345F40B3F35E318CF37C35D /* ARKit.framework */,
+				71EC935A0A562534659D9E50 /* RealityKit.framework */,
+				70A638437C3FB34BDA12D2F2 /* SceneKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A2578829946C8F919331927 /* Scan2Print */ = {
+			isa = PBXGroup;
+			children = (
+				640DF0F243F37FA036CA2067 /* Config.swift */,
+				952296509F2868F25999A374 /* Scan2PrintApp.swift */,
+				F0D588EC0245E7E4964DE35F /* Models */,
+				CD1FE4794773D00C18D4664C /* Services */,
+				174ADD0B5772E383B30DF873 /* Views */,
+			);
+			path = Scan2Print;
+			sourceTree = "<group>";
+		};
+		CD1FE4794773D00C18D4664C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F503BD79341963745BEB256A /* CaptureService.swift */,
+				28B57CF4051F3A29EC687F48 /* NetworkService.swift */,
+				49D6A920636A121CBCE2B7A7 /* ReconstructionService.swift */,
+				EA4DEFC7CB3C183076F66A98 /* ScanStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EBB70BDBC2F0E0350486B0F9 /* Scan2Print Tests */ = {
+			isa = PBXGroup;
+			children = (
+				40891E525EA8F634C06D8110 /* NetworkServiceTests.swift */,
+				5A2F01613BE8B9BA04D7639C /* SavedScanTests.swift */,
+				BEA70DAA515FE869D12A34CC /* ScanJobTests.swift */,
+				24D3E3ACD2166F5E58971E33 /* ScanStateTests.swift */,
+			);
+			path = "Scan2Print Tests";
+			sourceTree = "<group>";
+		};
+		F0D588EC0245E7E4964DE35F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4936037D68AB0BF09B37A795 /* SavedScan.swift */,
+				60AACC4AD29F26785AD82920 /* ScanJob.swift */,
+				468EA69823095622ABB17AE2 /* ScanState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0B82B008E510673831275581 /* Scan2Print */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11508980A337A45BE4CE87B4 /* Build configuration list for PBXNativeTarget "Scan2Print" */;
+			buildPhases = (
+				C3764F56104852E1448DBDD3 /* Sources */,
+				66FDCA126A0D5E0D209BDBE3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scan2Print;
+			packageProductDependencies = (
+			);
+			productName = Scan2Print;
+			productReference = 05A2F8F8EAF6E00BA1A1AC22 /* Scan2Print.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4858F8FEC998902FF5C32FF3 /* Scan2PrintTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A322AF3F91866D3FEDCD869 /* Build configuration list for PBXNativeTarget "Scan2PrintTests" */;
+			buildPhases = (
+				A9D06F28A812B7E94FB27624 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1DC8C0557D59D6877647CCDC /* PBXTargetDependency */,
+			);
+			name = Scan2PrintTests;
+			packageProductDependencies = (
+			);
+			productName = Scan2PrintTests;
+			productReference = 3D187F9E6BEB652A16042C09 /* Scan2PrintTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C8585F9FB4EC4A27D0E23288 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1630;
+			};
+			buildConfigurationList = 42CED6EF8DD08B601FC8E6F7 /* Build configuration list for PBXProject "Scan2Print" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 4FD9651A18FAF840EA665C43;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B82B008E510673831275581 /* Scan2Print */,
+				4858F8FEC998902FF5C32FF3 /* Scan2PrintTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9D06F28A812B7E94FB27624 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C9D4E749F8EA508FCB93989 /* NetworkServiceTests.swift in Sources */,
+				17AC13CC911F40162AA4A567 /* SavedScanTests.swift in Sources */,
+				C2616A951DBFA27B26E59521 /* ScanJobTests.swift in Sources */,
+				94453CACD5E58D81A3568E90 /* ScanStateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3764F56104852E1448DBDD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55FCAEC12BC3AE7FD44385DB /* CaptureService.swift in Sources */,
+				BFDAF40E8AEF1A8295815ECF /* Config.swift in Sources */,
+				D03B8ED221D6474A272CEBB9 /* ContentView.swift in Sources */,
+				AC6746E79BA394760562B9B4 /* LibraryView.swift in Sources */,
+				0788517ECF0AEC2C8B01E41A /* ModelPreviewView.swift in Sources */,
+				0F90A1981B8335F0A9DF314A /* NetworkService.swift in Sources */,
+				8A9ED89031C746041CF32A9E /* ReconstructionService.swift in Sources */,
+				02BEF2A9C6D132A6AED9CD28 /* ReconstructionView.swift in Sources */,
+				E6901F6235C06DA14EF1EFD4 /* ResultView.swift in Sources */,
+				7C298731185B5940E2CF34C1 /* SavedScan.swift in Sources */,
+				B5927A1EA325B6B535E4D5C6 /* Scan2PrintApp.swift in Sources */,
+				6A87E22C07ED7A1839ECFBB9 /* ScanDetailView.swift in Sources */,
+				C533D6C8BA92554D5506D312 /* ScanFlowView.swift in Sources */,
+				469E050A9B71C0068AC05063 /* ScanJob.swift in Sources */,
+				78784AE6CAA3C6BD97E94D2A /* ScanRowView.swift in Sources */,
+				4E26EB813704EFCDF1061CFB /* ScanSavedView.swift in Sources */,
+				39CD2658F2D83EC80D35A754 /* ScanState.swift in Sources */,
+				2128082A1E2296E3D430F0FA /* ScanStore.swift in Sources */,
+				EA31AB9EE7C2CEA10CEFF2AB /* ScanView.swift in Sources */,
+				FEA38537990DB52C14966283 /* UploadView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1DC8C0557D59D6877647CCDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0B82B008E510673831275581 /* Scan2Print */;
+			targetProxy = E7F3B4924CEC6A92A339F4F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		24F07438C259E3D45D9FB443 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Scan2Print/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.scan2print.Scan2Print;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		619B70CBD7B990F8E9CC019D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.scan2print.Scan2PrintTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scan2Print.app/Scan2Print";
+			};
+			name = Debug;
+		};
+		7BA0214AF304A8DE5A36BFB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.scan2print.Scan2PrintTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scan2Print.app/Scan2Print";
+			};
+			name = Release;
+		};
+		7F6203FD3CA6F43050C5C9A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		82924EE6830115C7DD164A15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CCF25EF665B922412BC0B47F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Scan2Print/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.scan2print.Scan2Print;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		11508980A337A45BE4CE87B4 /* Build configuration list for PBXNativeTarget "Scan2Print" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24F07438C259E3D45D9FB443 /* Debug */,
+				CCF25EF665B922412BC0B47F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		42CED6EF8DD08B601FC8E6F7 /* Build configuration list for PBXProject "Scan2Print" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F6203FD3CA6F43050C5C9A1 /* Debug */,
+				82924EE6830115C7DD164A15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8A322AF3F91866D3FEDCD869 /* Build configuration list for PBXNativeTarget "Scan2PrintTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				619B70CBD7B990F8E9CC019D /* Debug */,
+				7BA0214AF304A8DE5A36BFB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C8585F9FB4EC4A27D0E23288 /* Project object */;
+}

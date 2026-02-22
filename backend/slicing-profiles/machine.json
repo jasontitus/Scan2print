@@ -1,0 +1,7 @@
+{
+  "machine_name": "Bambu Lab X1 Carbon",
+  "nozzle_diameter": "0.4",
+  "bed_size": "256x256",
+  "max_print_height": "256",
+  "_comment": "Replace with your actual BambuStudio machine profile export"
+}
