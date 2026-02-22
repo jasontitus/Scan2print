@@ -7,7 +7,6 @@ struct ScanView: View {
     let onFinished: () -> Void
     let onCancel: () -> Void
 
-    /// Rough minimum shots for a decent reconstruction.
     private let targetShots = 50
 
     private var progress: Double {
@@ -32,7 +31,7 @@ struct ScanView: View {
             }
 
             VStack {
-                // Top bar: cancel + shot counter
+                // Top bar: cancel + phase + shot counter
                 HStack {
                     Button(action: onCancel) {
                         Image(systemName: "xmark")
@@ -44,12 +43,14 @@ struct ScanView: View {
 
                     Spacer()
 
-                    if captureService.session != nil {
-                        shotCounter
-                    }
+                    shotCounter
                 }
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
+
+                // Phase label so user knows what's happening
+                phaseLabel
+                    .padding(.top, 8)
 
                 Spacer()
 
@@ -65,7 +66,7 @@ struct ScanView: View {
                 }
 
                 // Finish button
-                if captureService.isReady {
+                if captureService.shotCount > 0 {
                     Button(action: {
                         captureService.finish()
                         onFinished()
@@ -73,7 +74,7 @@ struct ScanView: View {
                         HStack(spacing: 8) {
                             Text("Finish Scan")
                             if captureService.shotCount < 20 {
-                                Text("(\(captureService.shotCount) shots — more is better)")
+                                Text("(\(captureService.shotCount) — need more)")
                                     .font(.caption)
                                     .foregroundColor(.white.opacity(0.7))
                             }
@@ -92,6 +93,27 @@ struct ScanView: View {
         .onAppear {
             captureService.start()
         }
+    }
+
+    // MARK: - Phase label
+
+    @ViewBuilder
+    private var phaseLabel: some View {
+        let text: String = switch captureService.phase {
+        case .initializing: "Starting..."
+        case .ready: "Point at an object"
+        case .detecting: "Detecting object..."
+        case .capturing: "Scanning — move slowly around object"
+        case .finishing: "Finishing..."
+        case .failed: "Scanner failed"
+        }
+
+        Text(text)
+            .font(.subheadline.weight(.medium))
+            .foregroundColor(.white)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(.ultraThinMaterial, in: Capsule())
     }
 
     // MARK: - Shot counter ring
@@ -124,9 +146,6 @@ struct ScanView: View {
         if fb.contains(.objectTooFar) { return "Move closer" }
         if fb.contains(.environmentTooDark) { return "Need more light" }
         if fb.contains(.objectNotFlippable) { return "Try a different angle" }
-        if captureService.shotCount == 0 && captureService.isReady {
-            return "Move around the object slowly"
-        }
         return nil
     }
 }

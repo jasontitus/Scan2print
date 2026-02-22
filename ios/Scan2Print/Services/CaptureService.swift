@@ -2,10 +2,19 @@ import Foundation
 import RealityKit
 import _RealityKit_SwiftUI
 
+enum CapturePhase: Equatable {
+    case initializing
+    case ready
+    case detecting
+    case capturing
+    case finishing
+    case failed
+}
+
 @MainActor
 class CaptureService: ObservableObject {
     @Published var session: ObjectCaptureSession?
-    @Published var isReady = false
+    @Published var phase: CapturePhase = .initializing
     @Published var shotCount = 0
     @Published var feedback: Set<ObjectCaptureSession.Feedback> = []
 
@@ -14,6 +23,7 @@ class CaptureService: ObservableObject {
 
     private var stateMonitorTask: Task<Void, Never>?
     private var feedbackMonitorTask: Task<Void, Never>?
+    private var shotCountTask: Task<Void, Never>?
 
     init() {
         let base = FileManager.default.temporaryDirectory.appending(path: "scan2print", directoryHint: .isDirectory)
@@ -33,14 +43,19 @@ class CaptureService: ObservableObject {
             for await state in session.stateUpdates {
                 guard let self else { return }
                 switch state {
-                case .ready, .detecting, .capturing:
-                    self.isReady = true
+                case .ready:
+                    self.phase = .ready
+                case .detecting:
+                    self.phase = .detecting
+                case .capturing:
+                    self.phase = .capturing
+                case .finishing:
+                    self.phase = .finishing
                 case .failed:
-                    self.isReady = false
+                    self.phase = .failed
                 default:
                     break
                 }
-                self.shotCount = session.numberOfShotsTaken
             }
         }
 
@@ -48,7 +63,18 @@ class CaptureService: ObservableObject {
             for await feedback in session.feedbackUpdates {
                 guard let self else { return }
                 self.feedback = feedback
-                self.shotCount = session.numberOfShotsTaken
+            }
+        }
+
+        // Poll shot count since it has no async sequence
+        shotCountTask = Task { [weak self] in
+            while !Task.isCancelled {
+                guard let self else { return }
+                let count = session.numberOfShotsTaken
+                if count != self.shotCount {
+                    self.shotCount = count
+                }
+                try? await Task.sleep(for: .milliseconds(500))
             }
         }
     }
@@ -62,8 +88,10 @@ class CaptureService: ObservableObject {
         stateMonitorTask = nil
         feedbackMonitorTask?.cancel()
         feedbackMonitorTask = nil
+        shotCountTask?.cancel()
+        shotCountTask = nil
         session = nil
-        isReady = false
+        phase = .initializing
         shotCount = 0
         feedback = []
     }
