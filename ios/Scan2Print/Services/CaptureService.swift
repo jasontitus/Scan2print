@@ -3,7 +3,8 @@ import os
 import RealityKit
 import _RealityKit_SwiftUI
 
-private let logger = Logger(subsystem: "com.scan2print", category: "CaptureService")
+private let log = LogStore.shared
+private let logCategory = "CaptureService"
 
 enum CapturePhase: Equatable {
     case initializing
@@ -32,63 +33,62 @@ class CaptureService: ObservableObject {
         let base = FileManager.default.temporaryDirectory.appending(path: "scan2print", directoryHint: .isDirectory)
         imageDirectory = base.appending(path: "images", directoryHint: .isDirectory)
         checkpointDirectory = base.appending(path: "checkpoints", directoryHint: .isDirectory)
-        logger.info("CaptureService init — images: \(self.imageDirectory.path()), checkpoints: \(self.checkpointDirectory.path())")
+        log.info("CaptureService init — images: \(imageDirectory.path()), checkpoints: \(checkpointDirectory.path())", category: logCategory)
     }
 
     func start() {
-        logger.info("start() called — cleaning directories")
+        log.info("start() called — cleaning directories", category: logCategory)
         cleanDirectories()
 
         let isSupported = ObjectCaptureSession.isSupported
-        logger.info("ObjectCaptureSession.isSupported = \(isSupported)")
+        log.info("ObjectCaptureSession.isSupported = \(isSupported)", category: logCategory)
         guard isSupported else {
-            logger.error("ObjectCaptureSession is NOT supported on this device")
+            log.error("ObjectCaptureSession is NOT supported on this device", category: logCategory)
             phase = .failed
             return
         }
 
         let session = ObjectCaptureSession()
         self.session = session
-        logger.info("ObjectCaptureSession created, calling session.start()")
+        log.info("ObjectCaptureSession created, calling session.start()", category: logCategory)
 
         var config = ObjectCaptureSession.Configuration()
         config.checkpointDirectory = checkpointDirectory
         session.start(imagesDirectory: imageDirectory, configuration: config)
-        logger.info("session.start() returned — monitoring state updates")
+        log.info("session.start() returned — monitoring state updates", category: logCategory)
 
         stateMonitorTask = Task { [weak self] in
             for await state in session.stateUpdates {
                 guard let self else { return }
-                logger.info("stateUpdate received: \(String(describing: state))")
+                log.info("stateUpdate received: \(String(describing: state))", category: logCategory)
                 switch state {
                 case .ready:
                     self.phase = .ready
-                    logger.info("Phase → ready — waiting for object detection")
+                    log.info("Phase → ready — waiting for object detection", category: logCategory)
                 case .detecting:
                     self.phase = .detecting
-                    logger.info("Phase → detecting — object detected, calling startCapturing()")
-                    session.startCapturing()
+                    log.info("Phase → detecting — object detected, waiting for user confirmation", category: logCategory)
                 case .capturing:
                     self.phase = .capturing
-                    logger.info("Phase → capturing — session is now taking shots")
+                    log.info("Phase → capturing — session is now taking shots", category: logCategory)
                 case .finishing:
                     self.phase = .finishing
-                    logger.info("Phase → finishing")
+                    log.info("Phase → finishing", category: logCategory)
                 case .failed(let error):
                     self.phase = .failed
-                    logger.error("Phase → failed: \(String(describing: error))")
+                    log.error("Phase → failed: \(String(describing: error))", category: logCategory)
                 default:
-                    logger.warning("Unhandled state: \(String(describing: state))")
+                    log.warning("Unhandled state: \(String(describing: state))", category: logCategory)
                     break
                 }
             }
-            logger.info("stateUpdates stream ended")
+            log.info("stateUpdates stream ended", category: logCategory)
         }
 
         feedbackMonitorTask = Task { [weak self] in
             for await feedback in session.feedbackUpdates {
                 guard let self else { return }
-                logger.info("Feedback update: \(feedback.map { String(describing: $0) }.joined(separator: ", "))")
+                log.info("Feedback update: \(feedback.map { String(describing: $0) }.joined(separator: ", "))", category: logCategory)
                 self.feedback = feedback
             }
         }
@@ -99,7 +99,7 @@ class CaptureService: ObservableObject {
                 guard let self else { return }
                 let count = session.numberOfShotsTaken
                 if count != self.shotCount {
-                    logger.info("Shot count changed: \(self.shotCount) → \(count)")
+                    log.info("Shot count changed: \(self.shotCount) → \(count)", category: logCategory)
                     self.shotCount = count
                 }
                 try? await Task.sleep(for: .milliseconds(500))
@@ -107,13 +107,19 @@ class CaptureService: ObservableObject {
         }
     }
 
+    /// Called by the user to confirm the detected object and begin capturing.
+    func confirmCapture() {
+        log.info("confirmCapture() — user confirmed object, calling startCapturing()", category: logCategory)
+        session?.startCapturing()
+    }
+
     func finish() {
-        logger.info("finish() called — shotCount=\(self.shotCount)")
+        log.info("finish() called — shotCount=\(self.shotCount)", category: logCategory)
         session?.finish()
     }
 
     func reset() {
-        logger.info("reset() called")
+        log.info("reset() called", category: logCategory)
         stateMonitorTask?.cancel()
         stateMonitorTask = nil
         feedbackMonitorTask?.cancel()
@@ -132,9 +138,9 @@ class CaptureService: ObservableObject {
             try? fm.removeItem(at: dir)
             do {
                 try fm.createDirectory(at: dir, withIntermediateDirectories: true)
-                logger.info("Created directory: \(dir.path())")
+                log.info("Created directory: \(dir.path())", category: logCategory)
             } catch {
-                logger.error("Failed to create directory \(dir.path()): \(error.localizedDescription)")
+                log.error("Failed to create directory \(dir.path()): \(error.localizedDescription)", category: logCategory)
             }
         }
     }

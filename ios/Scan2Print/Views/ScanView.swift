@@ -3,7 +3,8 @@ import os
 import RealityKit
 import _RealityKit_SwiftUI
 
-private let logger = Logger(subsystem: "com.scan2print", category: "ScanView")
+private let log = LogStore.shared
+private let logCategory = "ScanView"
 
 struct ScanView: View {
     @ObservedObject var captureService: CaptureService
@@ -68,6 +69,27 @@ struct ScanView: View {
                         .padding(.bottom, 8)
                 }
 
+                // Object confirmation button — shown when an object is detected
+                if captureService.phase == .detecting {
+                    Button(action: {
+                        log.info("User tapped 'Scan This Object'", category: logCategory)
+                        captureService.confirmCapture()
+                    }) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "checkmark.circle.fill")
+                            Text("Scan This Object")
+                        }
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 32)
+                        .padding(.vertical, 14)
+                        .background(.green)
+                        .clipShape(Capsule())
+                    }
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .padding(.bottom, 8)
+                }
+
                 // Finish button
                 if captureService.shotCount > 0 {
                     Button(action: {
@@ -92,16 +114,17 @@ struct ScanView: View {
                     .padding(.bottom, 40)
                 }
             }
+            .animation(.easeInOut(duration: 0.25), value: captureService.phase)
         }
         .onAppear {
-            logger.info("ScanView appeared — starting capture")
+            log.info("ScanView appeared — starting capture", category: logCategory)
             captureService.start()
         }
         .onChange(of: captureService.phase) { oldPhase, newPhase in
-            logger.info("ScanView phase changed: \(String(describing: oldPhase)) → \(String(describing: newPhase))")
+            log.info("ScanView phase changed: \(String(describing: oldPhase)) → \(String(describing: newPhase))", category: logCategory)
         }
         .onChange(of: captureService.shotCount) { oldCount, newCount in
-            logger.info("ScanView shotCount changed: \(oldCount) → \(newCount)")
+            log.info("ScanView shotCount changed: \(oldCount) → \(newCount)", category: logCategory)
         }
     }
 
@@ -112,7 +135,7 @@ struct ScanView: View {
         let text: String = switch captureService.phase {
         case .initializing: "Starting..."
         case .ready: "Point at an object"
-        case .detecting: "Detecting object..."
+        case .detecting: "Object detected — tap to start scanning"
         case .capturing: "Scanning — move slowly around object"
         case .finishing: "Finishing..."
         case .failed: "Scanner failed"
