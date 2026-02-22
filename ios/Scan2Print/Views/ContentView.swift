@@ -13,6 +13,10 @@ struct ContentView: View {
             LibraryView(scanStore: scanStore)
                 .tabItem { Label("Library", systemImage: "square.grid.2x2") }
                 .tag(1)
+
+            LogViewerView()
+                .tabItem { Label("Logs", systemImage: "doc.text") }
+                .tag(2)
         }
         .onAppear {
             scanStore.load()
