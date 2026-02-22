@@ -1,4 +1,7 @@
 import SwiftUI
+import os
+
+private let logger = Logger(subsystem: "com.scan2print", category: "ScanFlowView")
 
 struct ScanFlowView: View {
     @ObservedObject var scanStore: ScanStore
@@ -77,7 +80,10 @@ struct ScanFlowView: View {
 
             Spacer()
 
-            Button(action: { state = .scanning }) {
+            Button(action: {
+                logger.info("Start Scan tapped — transitioning to .scanning")
+                state = .scanning
+            }) {
                 Text("Start Scan")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -94,17 +100,20 @@ struct ScanFlowView: View {
     // MARK: - Actions
 
     private func startReconstruction() {
+        logger.info("startReconstruction() — shots taken: \(captureService.shotCount)")
         state = .reconstructing(progress: 0)
         reconstructionService.reconstruct(imagesDirectory: captureService.imageDirectory)
     }
 
     private func saveScan(modelURL: URL) {
         let name = "Scan \(scanStore.scans.count + 1)"
+        logger.info("saveScan() — name: \(name), url: \(modelURL.path())")
         let id = scanStore.addScan(name: name, modelURL: modelURL)
         state = .saved(scanId: id)
     }
 
     private func reset() {
+        logger.info("reset() — returning to idle")
         captureService.reset()
         reconstructionService.cancel()
         state = .idle

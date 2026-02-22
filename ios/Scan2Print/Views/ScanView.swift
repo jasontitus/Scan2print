@@ -1,6 +1,9 @@
 import SwiftUI
+import os
 import RealityKit
 import _RealityKit_SwiftUI
+
+private let logger = Logger(subsystem: "com.scan2print", category: "ScanView")
 
 struct ScanView: View {
     @ObservedObject var captureService: CaptureService
@@ -91,7 +94,14 @@ struct ScanView: View {
             }
         }
         .onAppear {
+            logger.info("ScanView appeared — starting capture")
             captureService.start()
+        }
+        .onChange(of: captureService.phase) { oldPhase, newPhase in
+            logger.info("ScanView phase changed: \(String(describing: oldPhase)) → \(String(describing: newPhase))")
+        }
+        .onChange(of: captureService.shotCount) { oldCount, newCount in
+            logger.info("ScanView shotCount changed: \(oldCount) → \(newCount)")
         }
     }
 
