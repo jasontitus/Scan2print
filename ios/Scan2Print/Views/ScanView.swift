@@ -174,10 +174,12 @@ struct ScanView: View {
 
     private var feedbackHint: String? {
         let fb = captureService.feedback
+        // Lighting is the top blocker — show it first
+        if fb.contains(.environmentLowLight) { return "⚠ Need more light — scanning can't start" }
+        if fb.contains(.environmentTooDark) { return "⚠ Too dark — turn on more lights" }
         if fb.contains(.movingTooFast) { return "Slow down" }
         if fb.contains(.objectTooClose) { return "Move farther away" }
         if fb.contains(.objectTooFar) { return "Move closer" }
-        if fb.contains(.environmentTooDark) { return "Need more light" }
         if fb.contains(.objectNotFlippable) { return "Try a different angle" }
         return nil
     }

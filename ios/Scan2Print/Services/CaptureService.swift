@@ -55,32 +55,17 @@ class CaptureService: ObservableObject {
         var config = ObjectCaptureSession.Configuration()
         config.checkpointDirectory = checkpointDirectory
         session.start(imagesDirectory: imageDirectory, configuration: config)
-        log.info("session.start() returned — monitoring state updates", category: logCategory)
+        log.info("session.start() returned — reading initial state", category: logCategory)
+
+        // Read the current state immediately — stateUpdates only yields
+        // FUTURE changes, so we'd miss the initial transition to .ready
+        updatePhase(from: session.state)
 
         stateMonitorTask = Task { [weak self] in
             for await state in session.stateUpdates {
                 guard let self else { return }
                 log.info("stateUpdate received: \(String(describing: state))", category: logCategory)
-                switch state {
-                case .ready:
-                    self.phase = .ready
-                    log.info("Phase → ready — waiting for object detection", category: logCategory)
-                case .detecting:
-                    self.phase = .detecting
-                    log.info("Phase → detecting — object detected, waiting for user confirmation", category: logCategory)
-                case .capturing:
-                    self.phase = .capturing
-                    log.info("Phase → capturing — session is now taking shots", category: logCategory)
-                case .finishing:
-                    self.phase = .finishing
-                    log.info("Phase → finishing", category: logCategory)
-                case .failed(let error):
-                    self.phase = .failed
-                    log.error("Phase → failed: \(String(describing: error))", category: logCategory)
-                default:
-                    log.warning("Unhandled state: \(String(describing: state))", category: logCategory)
-                    break
-                }
+                self.updatePhase(from: state)
             }
             log.info("stateUpdates stream ended", category: logCategory)
         }
@@ -130,6 +115,29 @@ class CaptureService: ObservableObject {
         phase = .initializing
         shotCount = 0
         feedback = []
+    }
+
+    private func updatePhase(from state: ObjectCaptureSession.CaptureState) {
+        log.info("updatePhase from: \(String(describing: state))", category: logCategory)
+        switch state {
+        case .ready:
+            phase = .ready
+            log.info("Phase → ready — waiting for object detection", category: logCategory)
+        case .detecting:
+            phase = .detecting
+            log.info("Phase → detecting — object detected, waiting for user confirmation", category: logCategory)
+        case .capturing:
+            phase = .capturing
+            log.info("Phase → capturing — session is now taking shots", category: logCategory)
+        case .finishing:
+            phase = .finishing
+            log.info("Phase → finishing", category: logCategory)
+        case .failed(let error):
+            phase = .failed
+            log.error("Phase → failed: \(String(describing: error))", category: logCategory)
+        default:
+            log.warning("Unhandled state: \(String(describing: state))", category: logCategory)
+        }
     }
 
     private func cleanDirectories() {
