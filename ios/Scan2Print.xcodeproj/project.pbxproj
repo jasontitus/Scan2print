@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02BEF2A9C6D132A6AED9CD28 /* ReconstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250AE778703682753BF9580 /* ReconstructionView.swift */; };
 		0788517ECF0AEC2C8B01E41A /* ModelPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE5BD81F4BC20ADBD0495EF /* ModelPreviewView.swift */; };
+		0A5D75C2B59541D95BAF120E /* LogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5F1420AC47723C353EAF8 /* LogStore.swift */; };
 		0F90A1981B8335F0A9DF314A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B57CF4051F3A29EC687F48 /* NetworkService.swift */; };
 		17AC13CC911F40162AA4A567 /* SavedScanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F01613BE8B9BA04D7639C /* SavedScanTests.swift */; };
 		2128082A1E2296E3D430F0FA /* ScanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4DEFC7CB3C183076F66A98 /* ScanStore.swift */; };
@@ -29,6 +30,7 @@
 		B5927A1EA325B6B535E4D5C6 /* Scan2PrintApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952296509F2868F25999A374 /* Scan2PrintApp.swift */; };
 		BFDAF40E8AEF1A8295815ECF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640DF0F243F37FA036CA2067 /* Config.swift */; };
 		C2616A951DBFA27B26E59521 /* ScanJobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA70DAA515FE869D12A34CC /* ScanJobTests.swift */; };
+		C2C37DC53A5D9A5E568889BC /* LogViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DACD46030CD127D2DF5FD3 /* LogViewerView.swift */; };
 		C533D6C8BA92554D5506D312 /* ScanFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324867283AFA7DB441414015 /* ScanFlowView.swift */; };
 		D03B8ED221D6474A272CEBB9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAA7B0A095F23262878DA4 /* ContentView.swift */; };
 		E6901F6235C06DA14EF1EFD4 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB290BAAF08BFCE9F822AE7 /* ResultView.swift */; };
@@ -50,6 +52,7 @@
 		02A9806A6132BC7CC3CCD081 /* ScanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDetailView.swift; sourceTree = "<group>"; };
 		05A2F8F8EAF6E00BA1A1AC22 /* Scan2Print.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Scan2Print.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D86B7B85BD21CCC7459C4A7 /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		1BC5F1420AC47723C353EAF8 /* LogStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogStore.swift; sourceTree = "<group>"; };
 		24D3E3ACD2166F5E58971E33 /* ScanStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStateTests.swift; sourceTree = "<group>"; };
 		28B57CF4051F3A29EC687F48 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		324867283AFA7DB441414015 /* ScanFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFlowView.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		AEFF8B8ED2C7258577BFC94E /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		BDAF78E9467855D524C498CB /* ScanRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanRowView.swift; sourceTree = "<group>"; };
 		BEA70DAA515FE869D12A34CC /* ScanJobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanJobTests.swift; sourceTree = "<group>"; };
+		C1DACD46030CD127D2DF5FD3 /* LogViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewerView.swift; sourceTree = "<group>"; };
 		D9C7526DD0E61DF4510D03BF /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
 		EA4DEFC7CB3C183076F66A98 /* ScanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanStore.swift; sourceTree = "<group>"; };
 		F345F40B3F35E318CF37C35D /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
@@ -97,6 +101,7 @@
 			children = (
 				4BFAA7B0A095F23262878DA4 /* ContentView.swift */,
 				AEFF8B8ED2C7258577BFC94E /* LibraryView.swift */,
+				C1DACD46030CD127D2DF5FD3 /* LogViewerView.swift */,
 				7CE5BD81F4BC20ADBD0495EF /* ModelPreviewView.swift */,
 				8250AE778703682753BF9580 /* ReconstructionView.swift */,
 				FEB290BAAF08BFCE9F822AE7 /* ResultView.swift */,
@@ -155,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F503BD79341963745BEB256A /* CaptureService.swift */,
+				1BC5F1420AC47723C353EAF8 /* LogStore.swift */,
 				28B57CF4051F3A29EC687F48 /* NetworkService.swift */,
 				49D6A920636A121CBCE2B7A7 /* ReconstructionService.swift */,
 				EA4DEFC7CB3C183076F66A98 /* ScanStore.swift */,
@@ -271,6 +277,8 @@
 				BFDAF40E8AEF1A8295815ECF /* Config.swift in Sources */,
 				D03B8ED221D6474A272CEBB9 /* ContentView.swift in Sources */,
 				AC6746E79BA394760562B9B4 /* LibraryView.swift in Sources */,
+				0A5D75C2B59541D95BAF120E /* LogStore.swift in Sources */,
+				C2C37DC53A5D9A5E568889BC /* LogViewerView.swift in Sources */,
 				0788517ECF0AEC2C8B01E41A /* ModelPreviewView.swift in Sources */,
 				0F90A1981B8335F0A9DF314A /* NetworkService.swift in Sources */,
 				8A9ED89031C746041CF32A9E /* ReconstructionService.swift in Sources */,

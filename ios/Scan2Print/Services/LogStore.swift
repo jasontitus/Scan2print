@@ -31,7 +31,7 @@ class LogStore: ObservableObject {
     @Published private(set) var entries: [LogEntry] = []
 
     private let maxEntries = 500
-    private var loggers: [String: Logger] = []
+    private var loggers: [String: Logger] = [:]
 
     private init() {}
 
